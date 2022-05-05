@@ -26,7 +26,8 @@ class SecondViewController: UIViewController {
         layoutUI()
     }
     
-    
+    //Nested Stackviews. I used nested loops too.
+    //so i create 8 stackviews and in stackview i create 5 buttons and add them to the stackview. I then add all these stackviews to the main stackview.
     func layoutStacks() {
         for _ in 0...7 {
             let stackView = UIStackView()
@@ -43,6 +44,7 @@ class SecondViewController: UIViewController {
                 button.layer.borderColor = UIColor.green.cgColor
                 button.layer.cornerRadius = 10
                 button.addTarget(self, action: #selector(numberButtonPressed), for: .touchUpInside)
+                //I append these buttons to a button array so I can easily manipulate them in other functions.
                 buttonArray.append(button)
                 stackView.addArrangedSubview(button)
             }
@@ -55,11 +57,13 @@ class SecondViewController: UIViewController {
         mainStack.distribution = .fillEqually
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         
-        for (index,button) in buttonArray.enumerated() {
+        //Enumerated arrays are handy to get the index number from any item in an array.
+        for (index, button) in buttonArray.enumerated() {
             button.setTitle(String(index + 1), for: .normal)
         }
     }
     
+    //Resets all button border widths to 0, runs the calcuilate func and changes the selected button border width.
     @objc func numberButtonPressed(sender: UIButton) {
         for button in buttonArray {
             button.layer.borderWidth = 0
@@ -77,6 +81,7 @@ class SecondViewController: UIViewController {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.text = "Good Luck!"
     }
     
     func layoutUI() {
