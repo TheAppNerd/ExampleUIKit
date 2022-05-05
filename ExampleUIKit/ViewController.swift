@@ -53,7 +53,8 @@ class ViewController: UIViewController {
     
     //objc funcs are required for target actions for some reason. its actually old objective c code.
     @objc func buttonPressed(sender: UIButton) {
-        print("Button Pressed")
+        let vc = SecondViewController()
+        show(vc, sender: self)
     }
     
     func layoutUI() {
